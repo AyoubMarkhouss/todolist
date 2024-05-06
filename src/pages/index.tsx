@@ -13,14 +13,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { MdOutlineDelete } from "react-icons/md";
-
 import React, { useState, useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
+interface Task {
+  id: number;
+  task: string;
+}
+
 export default function Home() {
   const [task, setTask] = useState("");
-  const [tab, setTab] = useState([]);
-
+  const [tab, setTab] = useState<Task[]>([]);
+  
+  
   const addtask = () => {
     setTab((prev) => {
       return [...prev, { id: prev.length + 1, task: task }];
@@ -28,7 +33,7 @@ export default function Home() {
     setTask("");
   };
 
-  const deletetask = (id) => {
+  const deletetask = (id: number) => {
     const newTab = tab.filter((item) => item.id != id);
     setTab(newTab);
   };
@@ -67,10 +72,8 @@ export default function Home() {
           <TableBody>
             {tab.map((item) => {
               return (
-                <TableRow className="">
-                  <TableCell className="font-medium" key={item.id}>
-                    {item.task}
-                  </TableCell>
+                <TableRow key={item.id}>
+                  <TableCell className="font-medium">{item.task}</TableCell>
                   <TableCell>
                     <Button
                       onClick={() => {
