@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-black h-screen text-slate-50 flex flex-col items-center">
+    <main className="bg-black min-h-screen h-full text-slate-50 flex flex-col items-center">
       <div className="h-10 w-60 rounded-b-3xl py-10 text-4xl bg-slate-50/30  flex justify-center items-center">
         <h1>ToDoLista</h1>
       </div>
